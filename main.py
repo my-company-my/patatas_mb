@@ -1,14 +1,14 @@
 ver = "B.0.5.0"
 if ver[0] == "D":
     blockSettings.write_string("lev", "8")
-# Show loading text
+
 cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
 cidk.y = 115
 pause(1)
 music.play(music.create_song(assets.song("""title""")),music.PlaybackMode.LOOPING_IN_BACKGROUND)
 lastu = int(blockSettings.read_string("lev"))
-#print(lastu)
+
 if not lastu and lastu != 0:
     lastu = 0
     nivel = -1
@@ -38,7 +38,6 @@ def menudo(menu_type, options: List[string], unlocked: List[number], size=None):
         if not size:
             square = sq(lenls(options))
             if int(str(square)) != square:
-                #print("menudo received not squarable")
                 return "Error"
             size = [square,square]
         dummy = sprites.create(img("."), SpriteKind.projectile)
@@ -62,10 +61,6 @@ def menudo(menu_type, options: List[string], unlocked: List[number], size=None):
         ant = 1
         bef = ""
         while True:
-            #print(str(sel))
-            #print(str(ant))
-            #print(unlocked)
-            #print("aire")
             pause(1)
             if unlocked[ant] == 1:
                 islands[ant].set_image(assets.image("island_no"))
@@ -135,13 +130,6 @@ def menudo(menu_type, options: List[string], unlocked: List[number], size=None):
             pause(1)
             islands[ant].set_image(assets.image("rect_no"))
             islands[sel].set_image(assets.image("rect_se"))
-            #print(str(sel))
-            #print(str(ant))
-            #print(unlocked)
-            #print(sel)
-            #print("aire")
-            #if not unlocked[sel]:
-            #    sel = ant
             if controller.right.is_pressed() and bef != "R":
                 bef = "R"
                 ant = sel if sel != lenls(options)-1 else ant
@@ -187,13 +175,8 @@ if nivel != -1:
     nivel = int(menudo("archipelago", ["1","2","3","4","5","6","7","8","9"], unlk))
 
 
-# Ask level
-
-#story.show_player_choices("Normal", "Facil", "Dificil")
 while not dif and nivel != -1:
-    #print(dif)
     dif = story.get_last_answer()
-#print(dif)
 
 if nivel != -1:
   if dif == "Normal":
@@ -209,7 +192,6 @@ if nivel != -1:
     times = [50]
     turn = 1000
 
-#nivel = game.ask_for_number("¿Cual nivel?", 1)
 fiches: List[Sprite] = []
 def itws(sprite: Sprite, k: number) -> bool:
     global fiches
@@ -248,8 +230,6 @@ if nivel == 1:
         nivel1
     """))
     ls = 13  # coins/lives
-    #rc = int(levs[dif][0])  # timer
-    #rc = 24
     
 
     psm = [30]
@@ -296,7 +276,7 @@ elif nivel == 9:
     ls = 3  # coins/lives
     rc = 9999  # timer
     psm = [30, 40, 50, 60]
-    #psm = [300,300,300,1000]
+
 elif nivel == -1:
     tiles.set_current_tilemap(tilemap("""tutorial"""))
     ls = 1
@@ -442,6 +422,7 @@ def enmydel():
                 ei.vy = -30
             if Math.percent_chance(25) and ei.is_hitting_tile(CollisionDirection.BOTTOM):
                 ei.vy = -30
+                
 def enmydel2():
     prs: List[Sprite] = []
     while True:
@@ -508,7 +489,7 @@ def check_ground():
             isj = True
 
 timer.background(check_ground)
-#print
+
 # Jump logic using gravity
 def jump_loop():
     global isj

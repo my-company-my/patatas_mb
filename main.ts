@@ -10,14 +10,12 @@ if (ver[0] == "D") {
     blockSettings.writeString("lev", "8")
 }
 
-//  Show loading text
 let cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
 cidk.y = 115
 pause(1)
 music.play(music.createSong(assets.song`title`), music.PlaybackMode.LoopingInBackground)
 let lastu = parseInt(blockSettings.readString("lev"))
-// print(lastu)
 if (!lastu && lastu != 0) {
     lastu = 0
     nivel = -1
@@ -65,7 +63,6 @@ function menudo(menu_type: string, options: string[], unlocked: number[], size: 
         if (!size) {
             square = sq(lenls(options))
             if (parseInt("" + square) != square) {
-                // print("menudo received not squarable")
                 return "Error"
             }
             
@@ -97,10 +94,6 @@ function menudo(menu_type: string, options: string[], unlocked: number[], size: 
         ant = 1
         bef = ""
         while (true) {
-            // print(str(sel))
-            // print(str(ant))
-            // print(unlocked)
-            // print("aire")
             pause(1)
             if (unlocked[ant] == 1) {
                 islands[ant].setImage(assets.image`island_no`)
@@ -202,13 +195,6 @@ function menudo(menu_type: string, options: string[], unlocked: number[], size: 
             pause(1)
             islands[ant].setImage(assets.image`rect_no`)
             islands[sel].setImage(assets.image`rect_se`)
-            // print(str(sel))
-            // print(str(ant))
-            // print(unlocked)
-            // print(sel)
-            // print("aire")
-            // if not unlocked[sel]:
-            //     sel = ant
             if (controller.right.isPressed() && bef != "R") {
                 bef = "R"
                 ant = sel != lenls(options) - 1 ? sel : ant
@@ -282,13 +268,9 @@ if (nivel != -1) {
     nivel = parseInt(menudo("archipelago", ["1", "2", "3", "4", "5", "6", "7", "8", "9"], unlk))
 }
 
-//  Ask level
-// story.show_player_choices("Normal", "Facil", "Dificil")
 while (!dif && nivel != -1) {
-    // print(dif)
     dif = story.getLastAnswer()
 }
-// print(dif)
 if (nivel != -1) {
     if (dif == "Normal") {
         times = times_normal
@@ -306,7 +288,6 @@ if (nivel != -1) {
     
 }
 
-// nivel = game.ask_for_number("¿Cual nivel?", 1)
 let fiches : Sprite[] = []
 function itws(sprite: Sprite, k: number): boolean {
     
@@ -350,8 +331,6 @@ if (nivel == 1) {
     `)
     ls = 13
     //  coins/lives
-    // rc = int(levs[dif][0])  # timer
-    // rc = 24
     psm = [30]
     music.play(music.createSong(assets.song`back1`), music.PlaybackMode.LoopingInBackground)
 } else if (nivel == 2) {
@@ -401,7 +380,6 @@ if (nivel == 1) {
     //  timer
     psm = [30, 40, 50, 60]
 } else if (nivel == -1) {
-    // psm = [300,300,300,1000]
     tiles.setCurrentTilemap(tilemap`tutorial`)
     ls = 1
     rc = 50
@@ -628,7 +606,6 @@ timer.background(function check_ground() {
         
     }
 })
-// print
 //  Jump logic using gravity
 timer.background(function jump_loop() {
     
