@@ -22,7 +22,7 @@ if (!lastu && lastu != 0) {
     dif = "temp"
 }
 
-//  Tiempos por nivel en listas (índice 0 → nivel 1, índice 4 → nivel 5)
+//  Times per level
 let times_easy = [30, 35, 30, 125, 45]
 let times_normal = [24, 30, 26, 120, 40]
 let times_hard = [13, 19, 19, 115, 35]
