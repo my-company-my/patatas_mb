@@ -1,4 +1,4 @@
-ver = "B.0.5.0"
+ver = "B.0.6.0"
 if ver[0] == "D":
     blockSettings.write_string("lev", "8")
 

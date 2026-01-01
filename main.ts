@@ -5,7 +5,7 @@ let turn: number;
 let ls: number;
 let psm: number[];
 let rc: number;
-let ver = "B.0.5.0"
+let ver = "B.0.6.0"
 if (ver[0] == "D") {
     blockSettings.writeString("lev", "8")
 }
