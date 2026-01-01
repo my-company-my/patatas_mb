@@ -1,4 +1,4 @@
-ver = "B.0.6.1"
+ver = "B.0.6.2"
 if ver[0] == "D":
     blockSettings.write_string("lev", "8")
 
@@ -390,9 +390,11 @@ def controller_loop():
     global sleep_counter
     while True:
         playersprite.set_image(assets.image("""player_right""") if playersprite.vx > 0 else assets.image("""player_left""")) if playersprite.vx != 0 else None
-        if controller.dx() or controller.B.is_pressed():
+        if controller.dx() or controller.A.is_pressed():
             if sleep_counter < 1:
                 playersprite.x -= 1
+                if playersprite.vx == 0:
+                    playersprite.set_image(assets.image("""player_right"""))
             sleep_counter = 5
         playersprite.vx = controller.dx(3750 if controller.B.is_pressed() else 2200)
         pause(10)

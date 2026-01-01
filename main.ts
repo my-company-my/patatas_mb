@@ -5,7 +5,7 @@ let turn: number;
 let ls: number;
 let psm: number[];
 let rc: number;
-let ver = "B.0.6.1"
+let ver = "B.0.6.2"
 if (ver[0] == "D") {
     blockSettings.writeString("lev", "8")
 }
@@ -485,9 +485,13 @@ timer.background(function controller_loop() {
     
     while (true) {
         playersprite.vx != 0 ? playersprite.setImage(playersprite.vx > 0 ? assets.image`player_right` : assets.image`player_left`) : null
-        if (controller.dx() || controller.B.isPressed()) {
+        if (controller.dx() || controller.A.isPressed()) {
             if (sleep_counter < 1) {
                 playersprite.x -= 1
+                if (playersprite.vx == 0) {
+                    playersprite.setImage(assets.image`player_right`)
+                }
+                
             }
             
             sleep_counter = 5
