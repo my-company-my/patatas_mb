@@ -1,4 +1,4 @@
-ver = "B.0.6.2"
+ver = "B.0.7.0"
 if ver[0] == "D":
     blockSettings.write_string("lev", "8")
 
@@ -272,7 +272,7 @@ elif nivel == 5:
 
 elif nivel == 6:
     tiles.set_current_tilemap(tilemap("""nivel13"""))
-    ls = 3
+    ls = 4
     rc = 9999
 
 elif nivel == 9:

@@ -5,7 +5,7 @@ let turn: number;
 let ls: number;
 let psm: number[];
 let rc: number;
-let ver = "B.0.6.2"
+let ver = "B.0.7.0"
 if (ver[0] == "D") {
     blockSettings.writeString("lev", "8")
 }
@@ -373,7 +373,7 @@ if (nivel == 1) {
     music.play(music.createSong(assets.song`back5`), music.PlaybackMode.LoopingInBackground)
 } else if (nivel == 6) {
     tiles.setCurrentTilemap(tilemap`nivel13`)
-    ls = 3
+    ls = 4
     rc = 9999
 } else if (nivel == 9) {
     tiles.setCurrentTilemap(tilemap`
