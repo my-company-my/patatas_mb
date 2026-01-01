@@ -6,7 +6,7 @@ cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
 cidk.y = 115
 pause(1)
-music.play(music.create_song(assets.song("""title""")),music.PlaybackMode.LOOPING_IN_BACKGROUND)
+music.play(music.create_song(assets.song("""title""")), music.PlaybackMode.LOOPING_IN_BACKGROUND)
 lastu = int(blockSettings.read_string("lev"))
 
 if not lastu and lastu != 0:
