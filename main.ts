@@ -10,6 +10,7 @@ if (ver[0] == "D") {
     blockSettings.writeString("lev", "8")
 }
 
+let sleep_counter = 5
 let cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
 cidk.y = 115
@@ -370,6 +371,10 @@ if (nivel == 1) {
     psm = [-30, 50, 70, 90, 110, 30, 150, 170, 100, 300, 500]
     rc = 40
     music.play(music.createSong(assets.song`back5`), music.PlaybackMode.LoopingInBackground)
+} else if (nivel == 6) {
+    tiles.setCurrentTilemap(tilemap`nivel13`)
+    ls = 3
+    rc = 9999
 } else if (nivel == 9) {
     tiles.setCurrentTilemap(tilemap`
         test
@@ -477,10 +482,18 @@ timer.background(function update_ui() {
 })
 //  Movement and win logic
 timer.background(function controller_loop() {
-    // global ls
+    
     while (true) {
-        playersprite.vx = controller.dx(controller.B.isPressed() ? 3750 : 2200)
         playersprite.vx != 0 ? playersprite.setImage(playersprite.vx > 0 ? assets.image`player_right` : assets.image`player_left`) : null
+        if (controller.dx()) {
+            if (sleep_counter < 1) {
+                playersprite.x -= 1
+            }
+            
+            sleep_counter = 5
+        }
+        
+        playersprite.vx = controller.dx(controller.B.isPressed() ? 3750 : 2200)
         pause(10)
     }
 })
@@ -497,6 +510,13 @@ timer.background(function countdown() {
             game.splash("Has perdido")
             music.stopAllSounds()
             game.reset()
+        }
+        
+        sleep_counter -= 1
+        if (sleep_counter == 0) {
+            playersprite.setImage(assets.image`player_sleep`)
+            playersprite.y += 1
+            playersprite.x += 1
         }
         
     }

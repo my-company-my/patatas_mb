@@ -2,6 +2,7 @@ ver = "B.0.5.0"
 if ver[0] == "D":
     blockSettings.write_string("lev", "8")
 
+sleep_counter = 5
 cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
 cidk.y = 115
@@ -269,6 +270,11 @@ elif nivel == 5:
     rc = 40
     music.play(music.create_song(assets.song("""back5""")),music.PlaybackMode.LOOPING_IN_BACKGROUND)
 
+elif nivel == 6:
+    tiles.set_current_tilemap(tilemap("""nivel13"""))
+    ls = 3
+    rc = 9999
+
 elif nivel == 9:
     tiles.set_current_tilemap(tilemap("""
         test
@@ -381,16 +387,20 @@ timer.background(update_ui)
 
 # Movement and win logic
 def controller_loop():
-    #global ls
+    global sleep_counter
     while True:
-        playersprite.vx = controller.dx(3750 if controller.B.is_pressed() else 2200)
         playersprite.set_image(assets.image("""player_right""") if playersprite.vx > 0 else assets.image("""player_left""")) if playersprite.vx != 0 else None
+        if controller.dx():
+            if sleep_counter < 1:
+                playersprite.x -= 1
+            sleep_counter = 5
+        playersprite.vx = controller.dx(3750 if controller.B.is_pressed() else 2200)
         pause(10)
 timer.background(controller_loop)
 
 # Countdown timer
 def countdown():
-    global rc
+    global rc, sleep_counter
     while True:
         pause(1000)
         rc -= 1
@@ -401,6 +411,13 @@ def countdown():
             game.splash("Has perdido")
             music.stop_all_sounds()
             game.reset()
+
+        sleep_counter -= 1
+        if sleep_counter == 0:
+            playersprite.set_image(assets.image("""player_sleep"""))
+            playersprite.y += 1
+            playersprite.x += 1
+
 timer.background(countdown)
 
 def enmydel():

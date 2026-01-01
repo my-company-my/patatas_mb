@@ -301,6 +301,22 @@ b . . . b b b b b b . . .
 666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666f
 66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666ff
 `;
+            case "image17":
+            case "player_sleep":return img`
+. . . f f f . . . . f f f 
+. . . f d d c . . c d d f 
+. . . f b d d f f d d b f 
+. . . f b b d b d d b b f 
+. . . f b b b d d b b b f 
+. . . f d d d d d d d d f 
+. . . f d f d d d d f d f 
+. . . f d d f d d f d d f 
+. . . f d d d b b d d b f 
+. f f b b b b b b b d f . 
+f d f f f d d d d d b f . 
+f b d b d f b b b d d f . 
+. f f f f b d f f b d f . 
+`;
         }
         return null;
     })
