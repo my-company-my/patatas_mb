@@ -274,6 +274,7 @@ elif nivel == 6:
     tiles.set_current_tilemap(tilemap("""nivel13"""))
     ls = 4
     rc = 9999
+    music.play(music.create_song(assets.song("""back6""")),music.PlaybackMode.LOOPING_IN_BACKGROUND)
 
 elif nivel == 9:
     tiles.set_current_tilemap(tilemap("""

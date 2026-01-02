@@ -375,6 +375,7 @@ if (nivel == 1) {
     tiles.setCurrentTilemap(tilemap`nivel13`)
     ls = 4
     rc = 9999
+    music.play(music.createSong(assets.song`back6`), music.PlaybackMode.LoopingInBackground)
 } else if (nivel == 9) {
     tiles.setCurrentTilemap(tilemap`
         test
